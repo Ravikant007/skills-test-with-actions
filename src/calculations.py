@@ -1,5 +1,7 @@
 # System Modules
 import math
+import pytest
+import os
 
 # Installed Modules
 # - None
@@ -11,6 +13,16 @@ def area_of_circle(radius):
         raise ValueError("Radius cannot be negative")
     return math.pi * radius ** 2
 
+def test_area_of_circle_negative_radius():
+    """Test that a negative radius raises ValueError."""
+    with pytest.raises(ValueError, match="Radius cannot be negative"):
+        area_of_circle(-1)
+
+
+def test_get_nth_fibonacci_negative():
+    """Test that a negative n raises ValueError."""
+    with pytest.raises(ValueError, match="n cannot be negative"):
+        get_nth_fibonacci(-1)
 
 def get_nth_fibonacci(n):
     """Calculate the nth Fibonacci number."""
